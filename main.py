@@ -6,13 +6,14 @@ import time
 
 def process_image(original_image):
     processed_image = cv2.cvtColor(original_image, cv2.COLOR_BGR2GRAY)
-    processed_image = cv2.Canny(processed_image, threshold1=150, threshold2=150)
+    processed_image = cv2.Canny(processed_image, threshold1=200, threshold2=250)  #for 640*480  @repairRoad//Aberdeen Sewage outflow
     return processed_image
 
 def screen_record():
     last_time = time.time()
     while(True):
-        screen = np.array(ImageGrab.grab(bbox =(125,125,925,725)))
+        #screen = np.array(ImageGrab.grab(bbox =(0,40,1024,768)))
+        screen = np.array(ImageGrab.grab(bbox =(0,40,640,480)))
         new_screen = process_image(screen)
         
         print("Loop took {} seconds".format(time.time()-last_time))
